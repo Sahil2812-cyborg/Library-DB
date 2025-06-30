@@ -63,3 +63,4 @@ CREATE TABLE borrows (
   CONSTRAINT fk_book_2_id FOREIGN KEY (book_id) REFERENCES books (id),
   CONSTRAINT fk_card_id FOREIGN KEY (card_id) REFERENCES card (id)
 );
+select * from borrows;
