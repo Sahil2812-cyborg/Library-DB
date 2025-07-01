@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><database name="library" schema="library" type="MySQL - 8.0.42-0ubuntu0.24.04.1">
+   <tables>
+      <table catalog="library" name="book_instance" numRows="26" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="book_id" nullable="true" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="library" column="id" foreignKey="fk_book_id" implied="false" onDeleteCascade="false" table="books"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="rack_no" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="shelf_no" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="is_deleted" nullable="true" remarks="" size="1" type="BIT" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="fk_book_id" unique="false">
+            <column ascending="true" name="book_id"/>
+         </index>
+      </table>
+      <table catalog="library" name="books" numRows="10" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="library" column="book_id" foreignKey="fk_book_id" implied="false" onDeleteCascade="false" table="book_instance"/>
+            <child catalog="library" column="book_id" foreignKey="fk_book_2_id" implied="false" onDeleteCascade="false" table="borrows"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="author" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="pages" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="publication" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_on" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_on" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="is_deleted" nullable="true" remarks="" size="1" type="BIT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="price" nullable="true" remarks="" size="12" type="FLOAT" typeCode="7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table catalog="library" name="borrows" numRows="40" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="card_id" nullable="true" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="library" column="id" foreignKey="fk_card_id" implied="false" onDeleteCascade="false" table="card"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="book_id" nullable="true" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="library" column="id" foreignKey="fk_book_2_id" implied="false" onDeleteCascade="false" table="books"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="issue_date" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="return_date" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="is_damaged" nullable="true" remarks="" size="1" type="BIT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="damage_charges" nullable="true" remarks="" size="12" type="FLOAT" typeCode="7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="created_at" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="updated_at" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="is_deleted" nullable="true" remarks="" size="1" type="BIT" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="fk_book_2_id" unique="false">
+            <column ascending="true" name="book_id"/>
+         </index>
+         <index name="fk_card_id" unique="false">
+            <column ascending="true" name="card_id"/>
+         </index>
+      </table>
+      <table catalog="library" name="card" numRows="6" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="library" column="card_id" foreignKey="fk_card_id" implied="false" onDeleteCascade="false" table="borrows"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="library" column="id" foreignKey="fk_user_id" implied="false" onDeleteCascade="false" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="card_no" nullable="true" remarks="" size="20" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="fk_user_id" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table catalog="library" name="users" numRows="6" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="library" column="user_id" foreignKey="fk_user_id" implied="false" onDeleteCascade="false" table="card"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="phone" nullable="true" remarks="" size="15" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="email" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="address" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_at" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_at" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="is_deleted" nullable="true" remarks="" size="1" type="BIT" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+   </tables>
+</database>
