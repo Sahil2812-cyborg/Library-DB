@@ -288,6 +288,28 @@
                                     </td>
                                     <td></td>
                                 </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="book_instance_id">book_instance_id</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="borrows.book_instance_id references book_instance.id via fk_instance_id"><a href='book_instance.html'>book_instance</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">fk_instance_id</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -336,6 +358,12 @@
                                     <td><span title='Ascending'>Asc</span></td>
                                     <td>card_id</td>
                                 </tr>
+                                <tr>
+                                    <td title='Indexed'>fk_instance_id</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>book_instance_id</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div><!-- /.box-body -->
@@ -359,19 +387,20 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="borrows.html" target="_top" title="borrows" alt="" coords="197,41,503,404">
-<area shape="rect" id="node2" href="books.html" target="_top" title="books" alt="" coords="8,169,151,287">
-<area shape="rect" id="node3" href="card.html" target="_top" title="card" alt="" coords="5,5,153,152">
+<area shape="rect" id="node1" href="book_instance.html" target="_top" title="book_instance" alt="" coords="192,285,389,432">
+<area shape="rect" id="node2" href="books.html" target="_top" title="books" alt="" coords="5,247,148,364">
+<area shape="rect" id="node3" href="borrows.html" target="_top" title="borrows" alt="" coords="433,5,741,397">
+<area shape="rect" id="node4" href="card.html" target="_top" title="card" alt="" coords="217,37,365,184">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/borrows.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="book_instance.html" target="_top" title="book_instance" alt="" coords="427,385,625,473">
-<area shape="rect" id="node2" href="books.html" target="_top" title="books" alt="" coords="184,292,327,409">
-<area shape="rect" id="node3" href="borrows.html" target="_top" title="borrows" alt="" coords="373,5,679,368">
-<area shape="rect" id="node4" href="card.html" target="_top" title="card" alt="" coords="181,37,329,184">
-<area shape="rect" id="node5" href="users.html" target="_top" title="users" alt="" coords="5,69,137,157">
+<area shape="rect" id="node1" href="book_instance.html" target="_top" title="book_instance" alt="" coords="191,289,388,377">
+<area shape="rect" id="node2" href="books.html" target="_top" title="books" alt="" coords="5,259,147,347">
+<area shape="rect" id="node3" href="borrows.html" target="_top" title="borrows" alt="" coords="432,5,740,397">
+<area shape="rect" id="node4" href="card.html" target="_top" title="card" alt="" coords="215,37,363,184">
+<area shape="rect" id="node5" href="users.html" target="_top" title="users" alt="" coords="10,69,142,157">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/borrows.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
